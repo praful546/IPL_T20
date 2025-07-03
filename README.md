@@ -76,6 +76,9 @@ Deploy easily on Vercel or Netlify by connecting your Git repository.
 
 For Netlify, add this in your netlify.toml:
 
+toml
+Copy
+Edit
 [build]
   command = "npm run build"
   publish = ".next"
