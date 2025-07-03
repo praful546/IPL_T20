@@ -1,4 +1,5 @@
 🏏 IPL T20 Live Dashboard
+
 A Next.js 14 app providing live IPL match scores, schedules, and points table with real-time updates and modern UI.
 
 Built with:
@@ -11,88 +12,76 @@ TypeScript
 
 Puppeteer (for scraping IPL data)
 
-🚀 Features
-✅ Live match scores with auto-refresh
-✅ Real-time notifications for match events
-✅ Points table scraped from the official IPL website
-✅ Match schedules with detailed timeline view
-✅ Responsive and modern UI
-✅ Deployable on Vercel or Netlify
+Features:
 
-🔧 Getting Started
+Live match scores with auto-refresh
+
+Real-time notifications for match events
+
+Points table scraped from the official IPL website
+
+Match schedules with detailed timeline view
+
+Responsive and modern UI
+
+Deployable on Vercel or Netlify
+
+Getting Started:
+
 First, install dependencies:
-
-bash
-Copy
-Edit
 npm install
-Then run the development server:
 
-bash
-Copy
-Edit
+Then run the development server:
 npm run dev
-Open http://localhost:3000 to see the app.
+
+Open your browser at http://localhost:3000 to see the app.
 
 Build the production version:
-
-bash
-Copy
-Edit
 npm run build
-Preview your build locally:
 
-bash
-Copy
-Edit
+Preview your production build locally:
 npm run start
-📁 Project Structure
-rust
-Copy
-Edit
+
+Project Structure:
 /src
-  /app
-    /live-match        // Live matches page
-    /points-table      // Points table page
-    /match-details     // Match schedule page
-  /components          // Reusable UI components
-  /pages/api           // Serverless API routes for scraping IPL data
-  /styles              // TailwindCSS styles
-🗂️ Data Sources
-Live scores & points table scraped with Puppeteer from official IPL website endpoints.
+/app
+/live-match -> Live matches page
+/points-table -> Points table page
+/match-details -> Match schedule page
+/components -> Reusable UI components
+/pages/api -> Serverless API routes for scraping IPL data
+
+Data Sources:
+Live scores and points table are scraped with Puppeteer from the official IPL website.
 
 API routes:
 
-/api/live-match – Fetches live match updates
+/api/live-match: Fetches live match updates
 
-/api/points – Fetches points table
+/api/points: Fetches points table
 
-/api/scrape – Fetches match schedule results
+/api/scrape: Fetches match schedule results
 
-Note: Scraping is subject to site changes or rate limits by the IPL website.
+Note: Scraping depends on the IPL website structure and may break if the site changes or blocks scraping.
 
-☁️ Build & Deploy
-Deploy easily on Vercel or Netlify by connecting your Git repository.
+Build & Deploy:
+You can deploy this app easily on Vercel or Netlify by connecting your Git repository.
 
-For Netlify, add this in your netlify.toml:
-
-toml
-Copy
-Edit
+For Netlify deployment, add this to your netlify.toml file:
 [build]
-  command = "npm run build"
-  publish = ".next"
+command = "npm run build"
+publish = ".next"
 
 [[plugins]]
-  package = "@netlify/plugin-nextjs"
-⚠️ Notes
-This app scrapes data using Puppeteer. Always respect the IPL website’s terms of service.
+package = "@netlify/plugin-nextjs"
 
-For production scraping, consider using caching or official APIs (if available) to avoid heavy traffic or getting blocked.
+Notes:
 
-📖 Learn More
-Next.js Documentation
+This app uses Puppeteer for scraping IPL data. Make sure you respect the IPL website’s terms of service.
 
-TailwindCSS Documentation
+For production, consider caching scraped data or using official APIs (if available) to avoid sending excessive requests.
 
-Puppeteer Docs
+Learn More:
+Next.js Documentation: https://nextjs.org/docs
+TailwindCSS Documentation: https://tailwindcss.com/docs
+Puppeteer Docs: https://pptr.dev/
