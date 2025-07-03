@@ -72,8 +72,8 @@ export default function LiveMatchPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f6f8fc] p-4 sm:p-6 text-black relative">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-center">
+    <div className="min-h-screen  p-4 sm:p-6 text-black relative">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-white">
         Live Cricket Matches
       </h1>
 

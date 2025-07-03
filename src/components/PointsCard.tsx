@@ -55,8 +55,8 @@ export default function PointsTableSwiper() {
   }
 
   return (
-    <section className="py-6 bg-white overflow-hidden">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Points Table</h2>
+    <section className="py-6  overflow-hidden">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-white">Points Table</h2>
 
       <Swiper
         modules={[Navigation]}
@@ -133,13 +133,13 @@ export default function PointsTableSwiper() {
 
       <div className="mt-6 flex justify-center">
   <div className="relative inline-block group">
-    <div className="absolute inset-0 border-2 border-black transform skew-x-[-12deg] translate-x-1 translate-y-1 rounded z-0 pointer-events-none"></div>
+    <div className="absolute inset-0 border-2 border-white transform skew-x-[-12deg] translate-x-1 translate-y-1 rounded z-0 pointer-events-none"></div>
 
     <a
       href="/points-table"
       className="relative inline-flex items-center justify-center text-white font-bold text-lg bg-blue-900 px-8 py-3 rounded transform skew-x-[-12deg] overflow-hidden"
     >
-      <span className="inline-flex items-center gap-2 transform skew-x-[12deg] relative z-10">
+      <span className="inline-flex items-center gap-2 transform skew-x-[12deg] relative z-10 ">
         Full Points Table
         <span className="ml-2 flex items-center opacity-0 translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 ease-out">
           <svg

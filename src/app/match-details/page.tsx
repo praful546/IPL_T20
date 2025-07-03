@@ -34,8 +34,8 @@ export default function SchedulePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f6f8fc] p-4 sm:p-6 text-black relative">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Match Schedule</h1>
+    <div className="min-h-screen  p-4 sm:p-6 text-black relative">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-white">Match Schedule</h1>
 
       {!data || !data.matches || data.matches.length === 0 ? (
         <div className="flex justify-center items-center min-h-[200px]">

@@ -12,7 +12,13 @@
 }
 
 body {
- 
+  @apply bg-gradient-to-r from-[#D32F2F] via-[#B71C1C] to-[#4A148C];
+  background-image: 
+  linear-gradient(to right, rgba(211, 47, 47, 0.7), rgba(183, 28, 28, 0.7), rgba(74, 20, 140, 0.7)),
+  url('/IPL_ARRIVING.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 /* globals.css or a module CSS file */
 .hide-scrollbar {
