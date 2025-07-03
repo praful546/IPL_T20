@@ -82,20 +82,21 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-[#0a2540] shadow-lg py-4 px-6 space-y-4 font-semibold text-sm z-40">
-          {[
-            { href: "/live-match", label: "Live Matches" },
-            { href: "/points-table", label: "Points Table" },
-            { href: "/match-details", label: "Schedule" },
-            { href: "#", label: "Fan Poll" },
-            { href: "#", label: "Choice" },
-          ].map(({ href, label }) => (
-            <Link key={href} href={href} onClick={() => setMenuOpen(false)}>
-              <span className="block hover:text-yellow-400 transition">{label}</span>
-            </Link>
-          ))}
-        </div>
-      )}
+  <div className="md:hidden absolute top-full left-0 w-full bg-[#0a2540] shadow-lg py-4 px-6 space-y-4 font-semibold text-sm z-40">
+    {[
+      { href: "/live-match", label: "Live Matches" },
+      { href: "/points-table", label: "Points Table" },
+      { href: "/match-details", label: "Schedule" },
+      { href: "/fan-poll", label: "Fan Poll" },    
+      { href: "/choice", label: "Choice" },         
+    ].map(({ href, label }) => (
+      <Link key={href} href={href} onClick={() => setMenuOpen(false)}>
+        <span className="block py-2 hover:text-yellow-400 transition">{label}</span> 
+      </Link>
+    ))}
+  </div>
+)}
+
     </header>
   );
 }
