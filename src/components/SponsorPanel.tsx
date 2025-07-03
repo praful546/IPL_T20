@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function SponsorPanel() {
   const sponsors = [
     {
@@ -47,20 +49,14 @@ export default function SponsorPanel() {
   ];
 
   return (
-    <section className="bg-[#0e1639]  w-full overflow-x-auto">
-      <div className="flex ">
+    <section className="bg-[#0e1639] w-full overflow-x-auto">
+      <div className="flex">
         {sponsors.map((sponsor, idx) => (
           <div
             key={idx}
             className={`flex flex-col justify-start items-center text-center text-white py-4 px-4 border-r border-gray-600 last:border-none
-            ${
-              idx === 0
-                ? "w-[220px]"       
-                : idx === 1
-                ? "w-[500px]"     
-                : "w-[200px]"    
-            }
-            flex-shrink-0`}
+              ${idx === 0 ? "w-[220px]" : idx === 1 ? "w-[500px]" : "w-[200px]"}
+              flex-shrink-0`}
           >
             <div className="min-h-[40px] flex items-start justify-center mb-4">
               <p className="uppercase text-[12px] font-bold text-yellow-200 leading-tight">
@@ -72,9 +68,11 @@ export default function SponsorPanel() {
               <div className="flex flex-row flex-nowrap gap-6 justify-center">
                 {sponsor.sponsors.map((sub, i) => (
                   <a key={i} href={sub.link} target="_blank" rel="noopener noreferrer">
-                    <img
+                    <Image
                       src={sub.logo}
-                      alt=""
+                      alt={`Sponsor logo ${i + 1}`}
+                      width={100}
+                      height={60}
                       className="object-contain h-[60px] mx-auto"
                     />
                   </a>
@@ -82,9 +80,11 @@ export default function SponsorPanel() {
               </div>
             ) : (
               <a href={sponsor.link} target="_blank" rel="noopener noreferrer">
-                <img
+                <Image
                   src={sponsor.logo}
-                  alt=""
+                  alt="Sponsor logo"
+                  width={150}
+                  height={80}
                   className="object-contain h-[80px] mx-auto"
                 />
               </a>

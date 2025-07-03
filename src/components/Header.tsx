@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <header className="bg-[#0a2540] text-white shadow w-full relative z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between p-3 md:p-4">
-        <Link href="/" className="block">
+        <Link href="/">
           <Image
             src={IPLLogo}
             alt="IPL Logo"
@@ -20,34 +20,40 @@ export default function Navbar() {
           />
         </Link>
 
+        {/* Desktop Nav */}
         <nav className="hidden md:flex space-x-6 font-semibold text-sm md:text-base">
-          <Link href="/live-match" className="hover:text-yellow-400 transition">
-            Live Matches
+          <Link href="/live-match">
+            <span className="hover:text-yellow-400 transition">Live Matches</span>
           </Link>
-          <Link href="/points-table" className="hover:text-yellow-400 transition">
-            Points Table
+          <Link href="/points-table">
+            <span className="hover:text-yellow-400 transition">Points Table</span>
           </Link>
-          <Link href="/match-details" className="hover:text-yellow-400 transition">
-            Schedule
+          <Link href="/match-details">
+            <span className="hover:text-yellow-400 transition">Schedule</span>
           </Link>
         </nav>
 
+        {/* Desktop Extra Links */}
         <div className="hidden md:flex items-center space-x-4">
-          <Link href="#" className="hover:text-yellow-400 transition">
-            Fan Poll
+          <Link href="#">
+            <span className="hover:text-yellow-400 transition">Fan Poll</span>
           </Link>
-          <Link href="#" className="hover:text-yellow-400 transition">
-            Choice
+          <Link href="#">
+            <span className="hover:text-yellow-400 transition">Choice</span>
           </Link>
-          <button className="hover:text-yellow-400 transition" aria-label="Search">
+          <button
+            className="hover:text-yellow-400 transition"
+            aria-label="Search"
+          >
             🔍
           </button>
         </div>
 
+        {/* Mobile Hamburger */}
         <button
           className="md:hidden focus:outline-none"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menu"
+          aria-label={menuOpen ? "Close Menu" : "Open Menu"}
         >
           <svg
             className="w-7 h-7 text-white"
@@ -56,51 +62,38 @@ export default function Navbar() {
             viewBox="0 0 24 24"
           >
             {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             )}
           </svg>
         </button>
       </div>
 
+      {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-[#0a2540] shadow-lg py-4 px-6 space-y-4 font-semibold text-sm z-40">
-          <Link
-            href="/live-match"
-            className="block hover:text-yellow-400 transition"
-            onClick={() => setMenuOpen(false)}
-          >
-            Live Matches
-          </Link>
-          <Link
-            href="/points-table"
-            className="block hover:text-yellow-400 transition"
-            onClick={() => setMenuOpen(false)}
-          >
-            Points Table
-          </Link>
-          <Link
-            href="/match-details"
-            className="block hover:text-yellow-400 transition"
-            onClick={() => setMenuOpen(false)}
-          >
-            Schedule
-          </Link>
-          <Link
-            href="#"
-            className="block hover:text-yellow-400 transition"
-            onClick={() => setMenuOpen(false)}
-          >
-            Fan Poll
-          </Link>
-          <Link
-            href="#"
-            className="block hover:text-yellow-400 transition"
-            onClick={() => setMenuOpen(false)}
-          >
-            Choice
-          </Link>
+          {[
+            { href: "/live-match", label: "Live Matches" },
+            { href: "/points-table", label: "Points Table" },
+            { href: "/match-details", label: "Schedule" },
+            { href: "#", label: "Fan Poll" },
+            { href: "#", label: "Choice" },
+          ].map(({ href, label }) => (
+            <Link key={href} href={href} onClick={() => setMenuOpen(false)}>
+              <span className="block hover:text-yellow-400 transition">{label}</span>
+            </Link>
+          ))}
         </div>
       )}
     </header>

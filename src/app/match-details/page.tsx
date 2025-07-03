@@ -2,13 +2,34 @@
 
 import { useEffect, useState } from "react";
 
+type Team = {
+  name: string;
+  score: string;
+  overs: string;
+  flag: string;
+};
+
+type Match = {
+  stage: string;
+  venue: string;
+  date: string;
+  summary: string;
+  matchLink: string;
+  team1?: Team;
+  team2?: Team;
+};
+
+type ApiResponse = {
+  matches: Match[];
+};
+
 export default function SchedulePage() {
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<ApiResponse | null>(null);
 
   useEffect(() => {
     fetch("/api/scrape")
       .then((res) => res.json())
-      .then((json) => setData(json))
+      .then((json: ApiResponse) => setData(json))
       .catch((err) => console.error("Failed to fetch schedule:", err));
   }, []);
 
@@ -25,7 +46,7 @@ export default function SchedulePage() {
           {/* Timeline line: hidden on small screens */}
           <div className="hidden sm:block absolute top-0 left-6 sm:left-14 h-full w-0.5 bg-gray-300"></div>
 
-          {data.matches.map((match: any, idx: number) => (
+          {data.matches.map((match, idx) => (
             <div
               key={idx}
               className="relative flex flex-col sm:flex-row gap-4 sm:gap-6 pl-0 sm:pl-20"

@@ -2,13 +2,30 @@
 
 import { useEffect, useState } from "react";
 
+type Team = {
+  teamLogo: string;
+  teamName: string;
+  played: string;
+  wins: string;
+  losses: string;
+  nr: string;
+  nrr: string;
+  forRuns: string;
+  againstRuns: string;
+  points: string;
+};
+
+type ApiResponse = {
+  points: Team[];
+};
+
 export default function PointsTable() {
-  const [points, setPoints] = useState<any[]>([]);
+  const [points, setPoints] = useState<Team[]>([]);
 
   useEffect(() => {
     fetch("/api/points")
       .then((res) => res.json())
-      .then((data) => setPoints(data.points))
+      .then((data: ApiResponse) => setPoints(data.points))
       .catch((err) => console.error("Failed to fetch points table:", err));
   }, []);
 

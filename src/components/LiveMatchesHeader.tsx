@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 interface Match {
   series: string;
@@ -25,9 +26,7 @@ export default function LiveMatchesTicker() {
   }, []);
 
   const scroll = (offset: number) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: offset, behavior: "smooth" });
-    }
+    scrollRef.current?.scrollBy({ left: offset, behavior: "smooth" });
   };
 
   return (
@@ -35,6 +34,7 @@ export default function LiveMatchesTicker() {
       <button
         onClick={() => scroll(-300)}
         className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-[#19398a] hover:bg-[#142e6e] text-white rounded-full p-2 z-50"
+        aria-label="Scroll left"
       >
         <ChevronLeft size={20} />
       </button>
@@ -48,20 +48,21 @@ export default function LiveMatchesTicker() {
             <a
               key={idx}
               href="/live-match"
-              className="
-                flex-shrink-0
-                bg-white text-black rounded-xl shadow
-                w-[90%] sm:w-[300px] md:w-[400px] lg:w-[500px]
-                p-4 hover:shadow-lg transition
-              "
+              className="flex-shrink-0 bg-white text-black rounded-xl shadow w-[85%] sm:w-[300px] md:w-[400px] lg:w-[500px] p-4 hover:shadow-lg transition"
             >
               <p className="text-xs text-gray-600 mb-1 font-medium truncate">{match.series}</p>
-              <div className="text-xs font-semibold text-yellow-500 mb-1">{match.status}</div>
+              <p className="text-xs font-semibold text-yellow-500 mb-1">{match.status}</p>
               <p className="text-xs text-gray-700 mb-2 truncate">{match.info}</p>
 
               <div className="flex justify-between items-center">
-                <div className="flex items-center space-x-1">
-                  <img src={match.team1.flag} alt={match.team1.name} className="w-5 h-5" />
+                <div className="flex items-center gap-1">
+                  <Image
+                    src={match.team1.flag}
+                    alt={match.team1.name}
+                    width={20}
+                    height={20}
+                    className="object-contain"
+                  />
                   <p className="font-bold text-sm">{match.team1.name}</p>
                 </div>
                 <p className="text-sm font-semibold whitespace-nowrap">
@@ -70,8 +71,14 @@ export default function LiveMatchesTicker() {
               </div>
 
               <div className="flex justify-between items-center mt-1">
-                <div className="flex items-center space-x-1">
-                  <img src={match.team2.flag} alt={match.team2.name} className="w-5 h-5" />
+                <div className="flex items-center gap-1">
+                  <Image
+                    src={match.team2.flag}
+                    alt={match.team2.name}
+                    width={20}
+                    height={20}
+                    className="object-contain"
+                  />
                   <p className="font-bold text-sm">{match.team2.name}</p>
                 </div>
                 <p className="text-sm font-semibold whitespace-nowrap">
@@ -88,6 +95,7 @@ export default function LiveMatchesTicker() {
       <button
         onClick={() => scroll(300)}
         className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-[#19398a] hover:bg-[#142e6e] text-white rounded-full p-2 z-50"
+        aria-label="Scroll right"
       >
         <ChevronRight size={20} />
       </button>

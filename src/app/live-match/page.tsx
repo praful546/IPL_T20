@@ -3,19 +3,39 @@
 import { useEffect, useState, useRef } from "react";
 import { toast } from "react-toastify";
 
+type Team = {
+  name: string;
+  score: string;
+  overs: string;
+  flag: string;
+};
+
+type Match = {
+  series: string;
+  matchLink: string;
+  status: string;
+  info: string;
+  team1: Team;
+  team2: Team;
+  note: string;
+};
+
+type ApiResponse = {
+  matches: Match[];
+};
+
 export default function LiveMatchPage() {
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<ApiResponse | null>(null);
   const prevStatusRef = useRef<Map<string, string>>(new Map());
   const initialLoadRef = useRef<boolean>(true);
 
   const fetchLiveMatches = async () => {
     try {
       const res = await fetch("/api/live-match");
-      const json = await res.json();
+      const json: ApiResponse = await res.json();
 
-      // Skip notifications on the very first load
       if (!initialLoadRef.current) {
-        json.matches?.forEach((match: any) => {
+        json.matches?.forEach((match) => {
           const key = match.series + match.info; // unique key per match
           const prevStatus = prevStatusRef.current.get(key);
 
@@ -34,8 +54,7 @@ export default function LiveMatchPage() {
         initialLoadRef.current = false;
       }
 
-      // Always update the reference map with latest statuses
-      json.matches?.forEach((match: any) => {
+      json.matches?.forEach((match) => {
         const key = match.series + match.info;
         prevStatusRef.current.set(key, match.status);
       });
@@ -64,7 +83,7 @@ export default function LiveMatchPage() {
         </div>
       ) : (
         <div className="space-y-6 w-full max-w-4xl mx-auto">
-          {data.matches.map((match: any, index: number) => (
+          {data.matches.map((match, index) => (
             <div
               key={index}
               className="bg-white rounded-xl shadow p-4 sm:p-5 hover:shadow-lg transition border border-gray-200"
