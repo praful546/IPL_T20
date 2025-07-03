@@ -140,10 +140,9 @@ export default function LiveMatchPage() {
               </p>
 
               <a
-                href={match.matchLink}
+                href="/live-match"
                 className="block mt-4 text-blue-600 font-semibold underline hover:text-blue-800 transition text-center sm:text-left"
-                target="_blank"
-                rel="noopener noreferrer"
+ 
               >
                 View Live Score
               </a>
