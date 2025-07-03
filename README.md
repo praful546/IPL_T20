@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏏 IPL T20 Live Dashboard
 
-## Getting Started
+A Next.js 14 app providing live IPL match scores, schedules, and points table with real-time updates and modern UI.
 
-First, run the development server:
+Built with:
+- **Next.js 14 App Router**
+- **TailwindCSS**
+- **TypeScript**
+- **Puppeteer (for scraping IPL data)**
+
+---
+
+## 🚀 Features
+
+✅ Live match scores with auto-refresh  
+✅ Real-time notifications for match events  
+✅ Points table scraped from the official IPL website  
+✅ Match schedules with detailed timeline view  
+✅ Responsive and modern UI  
+✅ Deployable on Vercel or Netlify
+
+---
+
+## 🔧 Getting Started
+
+First, install dependencies:
 
 ```bash
+npm install
+Then run the development server:
+
+bash
+Copy
+Edit
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open http://localhost:3000 to see the app.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build the production version:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+bash
+Copy
+Edit
+npm run build
+Preview your build locally:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+bash
+Copy
+Edit
+npm run start
+📁 Project Structure
+rust
+Copy
+Edit
+/src
+  /app
+    /live-match        // Live matches page
+    /points-table      // Points table page
+    /match-details     // Match schedule page
+  /components          // Reusable UI components
+  /pages/api           // Serverless API routes for scraping IPL data
+🗂️ Data Sources
+Live scores & points table scraped with Puppeteer from official IPL website endpoints.
 
-## Learn More
+API routes:
 
-To learn more about Next.js, take a look at the following resources:
+/api/live-match – Fetches live match updates
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+/api/points – Fetches points table
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+/api/scrape – Fetches match schedule results
 
-## Deploy on Vercel
+Note: Scraping is subject to site changes or rate limits by the IPL website.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+☁️ Build & Deploy
+Deploy easily on Vercel or Netlify by connecting your Git repository.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For Netlify, add this in your netlify.toml:
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+⚠️ Notes
+This app scrapes data using Puppeteer. Always respect the IPL website’s terms of service.
+
+For production scraping, consider using caching or official APIs (if available) to avoid heavy traffic or getting blocked.
+
+📖 Learn More
+Next.js Documentation
+
+TailwindCSS Documentation
+
+Puppeteer Docs
+
+
