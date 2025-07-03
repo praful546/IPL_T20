@@ -36,7 +36,7 @@ export default function LiveMatchPage() {
 
       if (!initialLoadRef.current) {
         json.matches?.forEach((match) => {
-          const key = match.series + match.info; // unique key per match
+          const key = match.series + match.info; 
           const prevStatus = prevStatusRef.current.get(key);
 
           if (
@@ -66,13 +66,13 @@ export default function LiveMatchPage() {
   };
 
   useEffect(() => {
-    fetchLiveMatches(); // initial fetch
-    const interval = setInterval(fetchLiveMatches, 10000); // Poll every 10 seconds
+    fetchLiveMatches(); 
+    const interval = setInterval(fetchLiveMatches, 10000); 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="min-h-screen p-4 sm:p-6 bg-[#f6f8fc] text-black">
+    <div className="min-h-screen bg-[#f6f8fc] p-4 sm:p-6 text-black relative">
       <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-center">
         Live Cricket Matches
       </h1>

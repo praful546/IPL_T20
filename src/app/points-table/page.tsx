@@ -30,8 +30,8 @@ export default function PointsTable() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f6f8fc] p-4 text-black">
-      <h1 className="text-2xl font-bold mb-6 text-center">IPL Points Table</h1>
+    <div className="min-h-screen bg-[#f6f8fc] p-4 sm:p-6 text-black relative">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-center">IPL Points Table</h1>
 
       {!points || points.length === 0 ? (
         <div className="flex justify-center items-center min-h-[200px]">

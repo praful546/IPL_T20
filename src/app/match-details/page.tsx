@@ -43,7 +43,6 @@ export default function SchedulePage() {
         </div>
       ) : (
         <div className="max-w-5xl mx-auto space-y-8 relative">
-          {/* Timeline line: hidden on small screens */}
           <div className="hidden sm:block absolute top-0 left-6 sm:left-14 h-full w-0.5 bg-gray-300"></div>
 
           {data.matches.map((match, idx) => (
@@ -51,23 +50,18 @@ export default function SchedulePage() {
               key={idx}
               className="relative flex flex-col sm:flex-row gap-4 sm:gap-6 pl-0 sm:pl-20"
             >
-              {/* Timeline dot */}
               <div className="hidden sm:block absolute left-12 top-6 w-4 h-4 bg-green-600 rounded-full z-10"></div>
 
               <div className="flex-1 bg-white rounded-xl shadow p-4 sm:p-5 border border-gray-200">
-                {/* Match stage */}
                 <div className="inline-block bg-green-100 text-green-700 font-bold text-xs sm:text-sm px-3 py-1 rounded mb-3">
                   {match.stage || "MATCH"}
                 </div>
 
-                {/* Venue & Date */}
                 <p className="text-sm sm:text-base text-gray-600 mb-2">
                   {match.venue || "Unknown Venue"} • {match.date || "Unknown Date"}
                 </p>
 
-                {/* Teams & Scores */}
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
-                  {/* Team 1 */}
                   <div className="flex items-center gap-2 w-full sm:w-auto justify-center sm:justify-start text-center sm:text-left">
                     {match.team1?.flag && (
                       <img
@@ -86,7 +80,6 @@ export default function SchedulePage() {
 
                   <span className="hidden sm:block text-lg font-bold text-gray-500">vs</span>
 
-                  {/* Team 2 */}
                   <div className="flex items-center gap-2 w-full sm:w-auto justify-center sm:justify-end text-center sm:text-right">
                     <div>
                       <p className="font-bold">{match.team2?.name || "TBD"}</p>
@@ -104,12 +97,10 @@ export default function SchedulePage() {
                   </div>
                 </div>
 
-                {/* Result or summary */}
                 <p className="text-sm sm:text-base text-black font-semibold mb-3 text-center sm:text-left">
                   {match.summary || "Match summary not available."}
                 </p>
 
-                {/* Match Centre Button */}
                 <div className="flex justify-center sm:justify-end">
                   {match.matchLink && (
                     <a
