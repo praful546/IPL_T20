@@ -1,16 +1,35 @@
-
 import type { NextApiRequest, NextApiResponse } from 'next';
-import puppeteer from 'puppeteer';  
+import puppeteer from 'puppeteer';
 import * as cheerio from 'cheerio';
 
-let cachedData: any = null;
+interface MatchTeam {
+  name: string;
+  score: string;
+  overs: string;
+  flag: string;
+}
+
+interface MatchData {
+  stage: string;
+  venue: string;
+  date: string;
+  summary: string;
+  matchLink: string;
+  team1: MatchTeam;
+  team2: MatchTeam;
+}
+
+let cachedData: MatchData[] | null = null;
 let lastFetchedTime = 0;
-const CACHE_DURATION = 10 * 60 * 1000; 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+const CACHE_DURATION = 10 * 60 * 1000;
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<{ matches: MatchData[] } | { error: string }>
+) {
   try {
     const now = Date.now();
 
-   
     if (cachedData && now - lastFetchedTime < CACHE_DURATION) {
       console.log("Returning data from cache...");
       return res.status(200).json({ matches: cachedData });
@@ -39,7 +58,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const content = await page.content();
     const $ = cheerio.load(content);
 
-    const matches: any[] = [];
+    const matches: MatchData[] = [];
 
     $("li.ng-scope").each((i, el) => {
       const stage = $(el).find(".vn-matchOrder").text().trim();

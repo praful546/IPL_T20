@@ -2,11 +2,27 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import puppeteer from "puppeteer";
 import * as cheerio from "cheerio";
 
-let cachedPoints: any[] | null = null;
+interface TeamPoints {
+  teamLogo: string;
+  teamName: string;
+  played: string;
+  wins: string;
+  losses: string;
+  nr: string;
+  nrr: string;
+  forRuns: string;
+  againstRuns: string;
+  points: string;
+}
+
+let cachedPoints: TeamPoints[] | null = null;
 let lastFetchTime = 0;
 const CACHE_DURATION = 60 * 60 * 1000; 
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<{ points: TeamPoints[] } | { error: string }>
+) {
   try {
     const now = Date.now();
     if (cachedPoints && now - lastFetchTime < CACHE_DURATION) {
@@ -28,7 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const content = await page.content();
     const $ = cheerio.load(content);
 
-    const points: any[] = [];
+    const points: TeamPoints[] = [];
     $("tbody#pointsdata > tr").each((i, el) => {
       const teamLogo = $(el).find(".ih-pt-img img").attr("src") || "";
       const teamName = $(el).find("h2.ih-pt-cont").text().trim();

@@ -75,7 +75,7 @@ export default function MatchCoverage() {
 
           <ul className="space-y-2 text-sm">
             <li className="hover:underline cursor-pointer">
-              Monga: Gill walks the talk amid India's unforced errors
+              Monga: Gill walks the talk amid India&apos;s unforced errors
             </li>
             <li className="hover:underline cursor-pointer">
               How Stokes waited and baited Jaiswal
@@ -84,7 +84,7 @@ export default function MatchCoverage() {
               No more Mr Nice Guy for Woakes
             </li>
             <li className="hover:underline cursor-pointer">
-              <span className="font-bold">As it happened -</span> It's in the balance
+              <span className="font-bold">As it happened -</span> It&apos;s in the balance
             </li>
             <li className="hover:underline cursor-pointer">
               Most wickets for England - Stokes level with Flintoff
